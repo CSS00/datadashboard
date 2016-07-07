@@ -1,11 +1,24 @@
-<!DOCTYPE html>
+<!-- views/index.ejs -->
+<!doctype html>
 <html>
-  <head>
-    <title><%= title %></title>
+<head>
+    <title>Dashboard</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="/stylesheets/font-awesome.min.css"> <!-- load fontawesome -->
+</head>
+<body>
+<div class="container">
+
+    <div class="jumbotron text-center">
+        <h1><i class="fa fa-area-chart" aria-hidden="true"></i></span> Welcome to Dashboard!</h1>
+
+        <p>Please Login or Signup:</p>
+
+        <a href="/login" class="btn btn-default"><i class="fa fa-user" aria-hidden="true"></i> Login</a>
+        <a href="/signup" class="btn btn-default"><i class="fa fa-user" aria-hidden="true"></i> Signup</a>
+    </div>
+
+</div>
+</body>
 </html>

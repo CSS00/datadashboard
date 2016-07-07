@@ -7,8 +7,44 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var User = require('./models/User.js');
 
 var app = express();
+
+// Configuring Passport
+var flash    = require('connect-flash');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var expressSession = require('express-session');
+app.use(expressSession({ secret: 'mySecretKey' }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+passport.use(new LocalStrategy(
+    function(username, password, done) {
+      User.findOne({ username: username }, function (err, user) {
+        if (err) { return done(err); }
+        if (!user) {
+          return done(null, false, { message: 'Incorrect username.' });
+        }
+        if (!user.validPassword(password)) {
+          return done(null, false, { message: 'Incorrect password.' });
+        }
+        return done(null, user);
+      });
+    }
+));
+
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -56,5 +92,10 @@ app.use(function(err, req, res, next) {
   });
 });
 
+/* Handle Login POST */
+app.post('/login', passport.authenticate('local',
+    { successRedirect: '/',
+      failureRedirect: '/login',
+      failureFlash: true}));
 
 module.exports = app;
