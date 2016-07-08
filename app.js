@@ -21,6 +21,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
+var chartData = require('./models/ChartData.js');
 require('./conf/passport')(passport);
 require('./conf/server');
 require('./conf/client');

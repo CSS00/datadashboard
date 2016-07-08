@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+var chartData = require("../models/ChartData.js");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -38,6 +39,12 @@ router.get('/dashboard', isLoggedIn, function(req, res) {
 router.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/');
+});
+
+router.get('/data',function(req, res){
+    console.log("-----------------\n");
+    console.log(chartData);
+    return res.json(chartData.items);
 });
 
 function isLoggedIn(req, res, next) {

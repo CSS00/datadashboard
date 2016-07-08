@@ -1,6 +1,7 @@
 var mqtt    = require('mqtt');
 var util = require('util');
 
+
 new mqtt.Server(function(client) {
     var self = this;
 
@@ -27,7 +28,6 @@ new mqtt.Server(function(client) {
             granted.push(qos);
             client.subscriptions.push(reg);
         }
-
         client.suback({messageId: packet.messageId, granted: granted});
     });
 
