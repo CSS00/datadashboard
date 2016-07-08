@@ -1,0 +1,45 @@
+<!-- views/index.ejs -->
+<!doctype html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="/stylesheets/font-awesome.min.css"> <!-- load fontawesome -->
+
+    <!--<script src='//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular-resource.min.js'></script>-->
+    <!--<script src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>-->
+    <!--<script src='/javascripts/services.js'></script>-->
+    <!--<script src='/javascripts/controllers.js'></script>-->
+
+    <!--<script src="/lib/angular.js"></script>-->
+    <!--<script src="/lib/angular-route.js"></script>-->
+    <!--<script src="/lib/d3.js"></script>-->
+    <!--<script src="/lib/nv.d3.js"></script> &lt;!&ndash; or use another assembly &ndash;&gt;-->
+    <!--<script src="/lib/angular-nvd3.js"></script>-->
+    <!--<script src="http://cmaurer.github.io/angularjs-nvd3-directives/lib/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>-->
+    <!--<link rel="stylesheet" href="/lib/nv.d3.css">-->
+    <script src="/javascripts/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.3.9/d3.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/nvd3/1.1.13-beta/nv.d3.min.js"></script>
+    <script src="http://cmaurer.github.io/angularjs-nvd3-directives/lib/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.7.0/nv.d3.css"/>
+    <script src='/javascripts/app.js'></script>
+</head>
+<body ng-app="myApp">
+<div class="container">
+    <div class="page-header text-center">
+        <h3><i class="fa fa-area-chart" aria-hidden="true"></i> Hi, <%= user.username %>. Welcome to Dashboard!</h3>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div>
+        <div ng-controller="myCtrl">
+            <div ng-view></div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
