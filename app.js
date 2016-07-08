@@ -22,6 +22,8 @@ app.use(passport.session());
 app.use(flash());
 
 require('./conf/passport')(passport);
+require('./conf/server');
+require('./conf/client');
 
 //passport.use(new LocalStrategy(
 //    function(username, password, done) {
